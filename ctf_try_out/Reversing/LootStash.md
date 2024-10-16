@@ -1,0 +1,3 @@
+- Contains one downloadable file -> `stash`
+- Can check this file for the flag by using *grep* but since it is a executable file we need *strings* to retrieve readable string first
+- `strings stash | grep "HTB"` -> gives the flag

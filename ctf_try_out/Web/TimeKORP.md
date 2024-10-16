@@ -1,0 +1,8 @@
+- The challenge consists of the source codes and IP and port to view the website
+- On viewing the website their are only two pages and they both automatically add a format parameter when routed.
+- From checking the Dockerfile it is evident that the flag is served from the subdomain /flag but routing to the subdomain shows 404 error code
+	- Further inspection of the source codes show that the router function is set to block all request and send 404 error
+- To bypass the restriction we need to access /flag through either of the existing pages
+	- When we try routing to the date page we can see the url include a format parameter
+	- Inspection of the source code that renders the date page (TimeModel.php) shows the use of a string to concatenate the date command with our choice of format and uses the exec command to process the string -> opens the door for **command injection**
+	- Change the url `format` parameter to `%Y-%m-%d%27;cat%20/flag;echo%27` will show the flag
