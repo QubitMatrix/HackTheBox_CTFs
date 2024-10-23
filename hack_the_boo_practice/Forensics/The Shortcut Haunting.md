@@ -1,0 +1,7 @@
+- This challenge consists of a downloadable file which is a .lnk executable
+- Check for its properties using `lnkinfo`
+	- `lnkinfo trick_or_treat.lnk`
+	- The command line arguments field seems to have a lot of information, on further analysing it we can notice a mention of base64 encoding
+	- Copy the string after `-Command "$fko =` and input it in cyberchef -> automatically uses base64 and decodes it
+	- The string after `$flag=` is the flag
+	- Flag -> `HTB{tr1ck_0r_tr34t_g03s_<obfuscated>}`
