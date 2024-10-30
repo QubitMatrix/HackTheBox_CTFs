@@ -1,0 +1,6 @@
+- The challenge consists of a single executable file
+- Executing the file asks for a password to reveal the flag
+- Check metadata using exiftool -> `exiftool pass` => no useful data
+- Check for any unobfuscated strings in the executable using strings -> `strings pass` => reveals the password
+- Execute pass and provide the password to get the flag
+- Flag -> `HTB{un0bfu5c4t3d_<obfuscated>}`

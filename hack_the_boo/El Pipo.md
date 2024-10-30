@@ -1,0 +1,5 @@
+- This challenge consists of docker and downloadable files
+- On executing the executable on local we can see that few letters are not enough to crack the flag 
+- As name suggest we could try something like `python3 -c "print('a'*100)" | ./el_pipo` and the fake flag is displayed
+- Copy the python output and paste it in the browser to get the flag
+- Flag -> `HTB{3l_p1p0v3rfl0w_<obfuscated>}`

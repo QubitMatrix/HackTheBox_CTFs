@@ -1,0 +1,7 @@
+- The challenge consists of an executable along with a solver script and a docker environment 
+- On executing the executable we notice this is try to change the return address by using our input -> **Buffer overflow exploit**
+- We can use the solver.py script to pwn the challenge
+	- Change number of bytes to 56 since we need 56 bytes from input to return address
+	- Next change the address to the address given as the read_flag() address
+- Executing the script along with the ip and port will return the flag
+- Flag -> `HTB{z4_w4rud0o0o0o0_<obfuscated>}`
